@@ -1,4 +1,5 @@
-import {words} from './hangman/words.js'
+import {words} from './hangman/words.js';
+import {Interacte} from './hangman/interacte.js';
 
 /**
  * @type {Object}
@@ -17,5 +18,6 @@ state.CURRENT_STATE = state.LOADING;
  */
 export const Hangman = {
     words:words,
-    state:state
+    state:state,
+    Interacte:Interacte
 }

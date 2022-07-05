@@ -2,10 +2,30 @@ import { Hangman } from '../src/index.js';
 
 function HangmanGame(){
 
+    /**
+     * @type {string} chosenWord
+     */
     let chosenWord = null;
+
+    /**
+     * @type {number} chosenWordIndex
+     */
     let chosenWordIndex = null;
+
+    /**
+     * @type {number} gameScore
+     */
     let gameScore = 0;
+
+    /**
+     * @type {string[]} wordsToChoose
+     */
     let wordsToChoose = Hangman.words;
+
+    /**
+     * @type {Hangman.Interacte} interacte
+     */
+    let interacte = null;
 
     this.run = function(){
 
@@ -18,9 +38,17 @@ function HangmanGame(){
         updateGame();
     }
 
+    /**
+     * 
+     * @returns 
+     */
     function initGame(){
 
         [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
+
+        interacte = new Hangman.Interacte(chosenWord);
+
+        interacte.createAllAlphaBoxs();
 
         return;
     }
@@ -37,6 +65,10 @@ function HangmanGame(){
         return [words[index],index];
     }
 
+    /**
+     * 
+     * @returns 
+     */
     function handleEventListeners(){
 
         window.addEventListener('keydown',handleAlphabetKeyDown,false);
@@ -50,10 +82,19 @@ function HangmanGame(){
      * @returns 
      */
     function handleAlphabetKeyDown(e){
+
+        if(chosenWord.includes((e.key).toLowerCase())){
+
+            interacte.fillBox((e.key).toUpperCase(),chosenWord.indexOf(e.key));
+            chosenWord = chosenWord.replace(e.key,'#');
+        }
         
         return;
     }
 
+    /**
+     * 
+     */
     function updateGame(){
 
         switch(Hangman.state.CURRENT_STATE){
@@ -73,10 +114,18 @@ function HangmanGame(){
         }
     }
 
+    /**
+     * 
+     * @returns 
+     */
     function playGame(){
         return;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     function endGame(){
         return;
     }
