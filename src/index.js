@@ -10,6 +10,8 @@ const state = {
     GAMEOVER:3
 }
 
+state.CURRENT_STATE = state.LOADING;
+
 /**
  * @namespace
  */
