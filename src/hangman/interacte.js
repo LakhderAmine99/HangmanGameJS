@@ -44,4 +44,23 @@ export class Interacte {
 
         this.#alphaBoxs[boxIndex].innerHTML = alpha;
     }
+
+    clearBoxs(){
+
+        this.#alphaBoxs.forEach(box => {
+            
+            box.innerHTML = "";
+        });
+
+        this.#alphaBoxs = [];
+        document.querySelector('.user-interactions-panel').innerHTML = "";
+    }
+
+    setWord(word){
+        this.#word = word;
+    }
+
+    getWord(){
+        return this.#word;
+    }
 };

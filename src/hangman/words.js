@@ -1,10 +1,10 @@
 export const words = [
     "hangman",
-    "partick",
+    "lion",
     "mentalist",
     "moon",
     "punisher",
     "shadows",
     "canvas",
-    "messi"
+    "toys"
 ]

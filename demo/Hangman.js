@@ -27,6 +27,11 @@ function HangmanGame(){
      */
     let interacte = null;
 
+    /**
+     * @type {number} filledBoxs
+     */
+    let filledBoxs = 0;
+
     this.run = function(){
 
         console.log("Hangman Game is up and running...");
@@ -87,6 +92,29 @@ function HangmanGame(){
 
             interacte.fillBox((e.key).toUpperCase(),chosenWord.indexOf(e.key));
             chosenWord = chosenWord.replace(e.key,'#');
+
+            filledBoxs++;
+
+            if(filledBoxs === chosenWord.length){
+
+                if(wordsToChoose.length - 1 === 0){
+
+                    Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
+                    updateGame();
+                    return;
+                    
+                }
+   
+                filledBoxs = 0;
+                    
+                wordsToChoose.splice(chosenWordIndex,1);
+                    
+                [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
+                    
+                interacte.clearBoxs();
+                interacte.setWord(chosenWord);                
+                interacte.createAllAlphaBoxs();
+            }
         }
         
         return;
@@ -127,6 +155,11 @@ function HangmanGame(){
      * @returns 
      */
     function endGame(){
+
+        interacte.clearBoxs();
+
+        alert("game is ended !");
+
         return;
     }
 
