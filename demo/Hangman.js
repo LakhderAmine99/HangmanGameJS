@@ -2,7 +2,8 @@ import { Hangman } from '../src/index.js';
 
 function HangmanGame(){
 
-    let choosenWord = null;
+    let chosenWord = null;
+    let chosenWordIndex = null;
     let gameScore = 0;
     let wordsToChoose = Hangman.words;
 
@@ -10,9 +11,18 @@ function HangmanGame(){
 
         console.log("Hangman Game is up and running...");
 
+        initGame();
+
         handleEventListeners();
 
-        // updateGame();
+        updateGame();
+    }
+
+    function initGame(){
+
+        [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
+
+        return;
     }
 
     /**
@@ -24,10 +34,7 @@ function HangmanGame(){
 
         let index = Math.floor(Math.random()*(words.length - 1));
 
-        return {
-            word:words[index],
-            wordIndex:index
-        };
+        return [words[index],index];
     }
 
     function handleEventListeners(){
@@ -49,10 +56,11 @@ function HangmanGame(){
 
     function updateGame(){
 
-        switch(Hangman.state){
+        switch(Hangman.state.CURRENT_STATE){
 
             case Hangman.state.LOADING:
                 console.log("Hangman game is loading...");
+                Hangman.state.CURRENT_STATE = Hangman.state.PLAYING;
             break;
 
             case Hangman.state.PLAYING:
