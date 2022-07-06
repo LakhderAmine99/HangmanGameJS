@@ -11,6 +11,11 @@ export class Interacte {
     #alphaBoxs = [];
 
     /**
+     * @type {array} #hangManPieces
+     */
+    #hangManPieces = [];
+
+    /**
      * 
      * @param {string} word 
      */
@@ -60,8 +65,25 @@ export class Interacte {
         document.querySelector('.game-score').innerHTML = "Score : "+score;
     }
 
+    nextPiece(){
+
+        return this.#hangManPieces.shift();
+    }
+
     drawHangman(piece){
 
+        if(piece !== undefined){
+
+            document.querySelector('.'+piece).classList.add('visible');
+        }
+    }
+
+    hideHangman(){
+
+        this.#hangManPieces.forEach(piece => {
+
+            document.querySelector('.'+piece).classList.remove('visible');
+        });
     }
 
     setWord(word){
