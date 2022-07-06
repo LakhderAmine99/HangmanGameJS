@@ -7,6 +7,29 @@
 html,body{
     background-color: rgb(55, 37, 63);
     color: white;
+    height: 100%;
+}
+
+#app{
+    height: 100%;
+}
+
+main,.container{
+    height: 100%;
+}
+
+.hangman-visualization-panel{
+
+    height: 80%;
+    background-color: rgba(49, 0, 64, 0.286);
+}
+
+.user-interactions-panel{
+
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex{
@@ -14,11 +37,11 @@ html,body{
 }
 
 .alpha-box-template{
-    border: 2px solid rgb(255, 255, 255);
+    border: 5px solid rgb(255, 179, 0);
     padding: 1.5rem;
     border-radius: 0.5rem;
     margin: 1rem 1.5rem;
-    background-color: rgb(132, 0, 255);
+    background-color: rgba(132, 0, 255, 0.367);
     font-weight: bold;
     font-size: 24px;
     width: 80px;
@@ -26,4 +49,17 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.game-score{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem 2rem;
+    width: 200px;
+    font-size: 32px;
+    text-align: center;
+    border-bottom-left-radius: 10%;
+    background-color: rgba(0, 0, 0, 0.377);
+    color: rgb(255, 101, 160);
 }

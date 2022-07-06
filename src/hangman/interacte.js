@@ -56,6 +56,10 @@ export class Interacte {
         document.querySelector('.user-interactions-panel').innerHTML = "";
     }
 
+    updateScore(score){
+        document.querySelector('.game-score').innerHTML = "Score : "+score;
+    }
+
     drawHangman(piece){
 
     }
