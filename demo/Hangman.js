@@ -102,7 +102,6 @@ function HangmanGame(){
                     Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
                     updateGame();
                     return;
-                    
                 }
    
                 filledBoxs = 0;
