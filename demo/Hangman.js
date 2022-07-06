@@ -45,7 +45,7 @@ function HangmanGame(){
 
     /**
      * 
-     * @returns 
+     * 
      */
     function initGame(){
 
@@ -54,8 +54,6 @@ function HangmanGame(){
         interacte = new Hangman.Interacte(chosenWord);
 
         interacte.createAlphaBoxs();
-
-        return;
     }
 
     /**
@@ -72,13 +70,11 @@ function HangmanGame(){
 
     /**
      * 
-     * @returns 
+     *
      */
     function handleEventListeners(){
 
         window.addEventListener('keydown',handleAlphabetKeyDown,false);
-
-        return;
     }
 
     /**
@@ -121,6 +117,9 @@ function HangmanGame(){
                 }
             }
 
+        }else{
+
+            interacte.drawHangman(interacte.nextPiece());
         }
         
         return;
@@ -143,23 +142,21 @@ function HangmanGame(){
         }
     }
 
+    /**
+     * 
+     * @returns Hangman current score.
+     */
     function updateGameScore(){
-        Hangman.score += 10;
-
-        return Hangman.score;
+        return Hangman.score += 10;
     }
 
     /**
      * 
-     * @returns 
+     * 
      */
     function endGame(){
 
         interacte.clearBoxs();
-
-        alert("game is ended !");
-
-        return;
     }
 
 };
