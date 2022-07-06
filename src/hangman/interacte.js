@@ -32,7 +32,7 @@ export class Interacte {
         return true;
     }
 
-    createAllAlphaBoxs(){
+    createAlphaBoxs(){
 
         for(let i=0; i<this.#word.length; i++){
 
@@ -54,6 +54,14 @@ export class Interacte {
 
         this.#alphaBoxs = [];
         document.querySelector('.user-interactions-panel').innerHTML = "";
+    }
+
+    updateScore(score){
+        document.querySelector('.game-score').innerHTML = "Score : "+score;
+    }
+
+    drawHangman(piece){
+
     }
 
     setWord(word){

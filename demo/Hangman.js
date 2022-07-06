@@ -53,7 +53,7 @@ function HangmanGame(){
 
         interacte = new Hangman.Interacte(chosenWord);
 
-        interacte.createAllAlphaBoxs();
+        interacte.createAlphaBoxs();
 
         return;
     }
@@ -88,33 +88,39 @@ function HangmanGame(){
      */
     function handleAlphabetKeyDown(e){
 
-        if(chosenWord.includes((e.key).toLowerCase())){
+        if(e.key.match('[A-z]')){
 
-            interacte.fillBox((e.key).toUpperCase(),chosenWord.indexOf(e.key));
-            chosenWord = chosenWord.replace(e.key,'#');
+            if(chosenWord.includes((e.key).toLowerCase())){
 
-            filledBoxs++;
+                interacte.fillBox((e.key).toUpperCase(),chosenWord.indexOf(e.key));
+                chosenWord = chosenWord.replace(e.key,'#');
 
-            if(filledBoxs === chosenWord.length){
+                filledBoxs++;
 
-                if(wordsToChoose.length - 1 === 0){
+                if(filledBoxs === chosenWord.length){
 
-                    Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
-                    updateGame();
-                    return;
-                    
+                    interacte.updateScore(updateGameScore());
+
+                    if(wordsToChoose.length - 1 === 0){
+
+                        Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
+                        updateGame();
+                        return;
+                    }
+    
+                    filledBoxs = 0;
+                        
+                    wordsToChoose.splice(chosenWordIndex,1);
+                        
+                    [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
+                        
+                    interacte.clearBoxs();
+                    interacte.setWord(chosenWord);                
+                    interacte.createAlphaBoxs();
+
                 }
-   
-                filledBoxs = 0;
-                    
-                wordsToChoose.splice(chosenWordIndex,1);
-                    
-                [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
-                    
-                interacte.clearBoxs();
-                interacte.setWord(chosenWord);                
-                interacte.createAllAlphaBoxs();
             }
+
         }
         
         return;
@@ -129,11 +135,6 @@ function HangmanGame(){
 
             case Hangman.state.LOADING:
                 console.log("Hangman game is loading...");
-                Hangman.state.CURRENT_STATE = Hangman.state.PLAYING;
-            break;
-
-            case Hangman.state.PLAYING:
-                playGame();
             break;
 
             case Hangman.state.GAMEOVER:
@@ -142,12 +143,10 @@ function HangmanGame(){
         }
     }
 
-    /**
-     * 
-     * @returns 
-     */
-    function playGame(){
-        return;
+    function updateGameScore(){
+        Hangman.score += 10;
+
+        return Hangman.score;
     }
 
     /**

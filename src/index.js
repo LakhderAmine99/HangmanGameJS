@@ -7,8 +7,7 @@ import {Interacte} from './hangman/interacte.js';
  */
 const state = {
     LOADING:1,
-    PLAYING:2,
-    GAMEOVER:3
+    GAMEOVER:2
 }
 
 state.CURRENT_STATE = state.LOADING;
@@ -19,5 +18,6 @@ state.CURRENT_STATE = state.LOADING;
 export const Hangman = {
     words:words,
     state:state,
-    Interacte:Interacte
+    Interacte:Interacte,
+    score:0
 }
