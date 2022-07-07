@@ -52,11 +52,13 @@ export class Interacte {
 
         return true;
     }
-
+    
     createAlphaBoxs(){
 
+        document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
+        
         for(let i=0; i<this.#word.length; i++){
-
+            
             this.createAlphaBox(i);
         }
     }
@@ -94,6 +96,7 @@ export class Interacte {
 
         if(piece !== undefined){
 
+            document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
             document.querySelector('.'+piece).classList.add('visible');
         }
     }
@@ -101,6 +104,7 @@ export class Interacte {
     removeHangmanLastPiece(){
 
         this.#hangManPieces.unshift(this.#hangManPiecesBackUp.pop());
+        document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
     }
 
     hideHangman(){

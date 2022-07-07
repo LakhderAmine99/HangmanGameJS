@@ -173,7 +173,14 @@ function HangmanGame(){
         if(interacte.getLeftedPiecesCount() === 0){
             
             interacte.fadeInMessage(4000,"Game Over");
+            
+            window.setTimeout(()=>{
+
+                initGame();
+                
+            },4000);
         }
+
     }
 
 };
