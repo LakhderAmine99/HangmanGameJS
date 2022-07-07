@@ -6,6 +6,7 @@
 
 html,body{
     /* background-color: rgb(55, 37, 63); */
+    font-family: monospace;
     color: white;
     height: 100%;
 }
@@ -53,17 +54,21 @@ main,.container{
     justify-content: center;
 }
 
-.game-score{
+.game-score,.game-chances{
     position: absolute;
     right: 0;
     top: 0;
     padding: 1rem 2rem;
-    width: 200px;
+    width: fit-content;
     font-size: 32px;
     text-align: center;
-    border-bottom-left-radius: 10%;
+    border-radius: 0.5rem;
     background-color: rgba(0, 0, 0, 0.377);
-    color: rgb(77, 157, 161);
+    color: rgb(122, 248, 255);
+}
+
+.game-chances{
+    left: 0;
 }
 
 .game-message{
@@ -73,7 +78,7 @@ main,.container{
     transform: translateX(-50%);
     padding: 2.5rem 4rem;
     font-size: 38px;
-    border-radius: 10%;
+    border-radius: 0.8rem;
     opacity: 0;
     color: white;
     background-color: rgba(0, 0, 0, 0.377);
