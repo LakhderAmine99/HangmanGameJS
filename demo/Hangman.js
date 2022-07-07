@@ -95,6 +95,7 @@ function HangmanGame(){
 
                 if(filledBoxs === chosenWord.length){
 
+                    interacte.fadeInWord(4000);
                     interacte.updateScore(updateGameScore());
 
                     if(wordsToChoose.length - 1 === 0){
@@ -113,13 +114,19 @@ function HangmanGame(){
                     interacte.clearBoxs();
                     interacte.setWord(chosenWord);                
                     interacte.createAlphaBoxs();
+                }
 
+            }else{
+
+                interacte.drawHangman(interacte.nextPiece());
+
+                if(interacte.getLeftedPieces() === 0){
+
+                    Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
+                    updateGame();
+                    return;
                 }
             }
-
-        }else{
-
-            interacte.drawHangman(interacte.nextPiece());
         }
         
         return;
