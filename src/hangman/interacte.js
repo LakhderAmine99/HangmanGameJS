@@ -86,6 +86,31 @@ export class Interacte {
         });
     }
 
+    getLeftedPieces(){
+
+        return this.#hangManPieces.length;
+    }
+
+    fadeInWord(milliseconds){
+
+        document.querySelector('.word-box').innerHTML = this.#word;
+        document.querySelector('.word-box').style.display = "block";
+
+        window.setTimeout(()=>{
+
+            document.querySelector('.word-box').classList.add('fadeIn');
+
+        },800);
+
+        window.setTimeout(()=>{
+
+            document.querySelector('.word-box').classList.remove('fadeIn');
+
+        },milliseconds);
+
+        document.querySelector('.word-box').style.display = "none";
+    }
+
     setWord(word){
         this.#word = word;
     }
