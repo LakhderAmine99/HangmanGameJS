@@ -16,11 +16,27 @@ export class Interacte {
     #hangManPieces = [];
 
     /**
+     * @type {array} #hangManPiecesBackUp
+     */
+    #hangManPiecesBackUp = [];
+
+    /**
      * 
      * @param {string} word 
      */
     constructor(word){
         this.#word = word;
+
+        this.#hangManPieces = [
+            "bar",
+            "rope",
+            "head",
+            "body",
+            "lefthand",
+            "righthand",
+            "leftfoot",
+            "rightfoot"
+        ]
     }
 
     createAlphaBox(id){
@@ -67,7 +83,11 @@ export class Interacte {
 
     nextPiece(){
 
-        return this.#hangManPieces.shift();
+        let piece = this.#hangManPieces.shift();
+
+        this.#hangManPiecesBackUp.push(piece);
+
+        return piece;
     }
 
     drawHangman(piece){
@@ -78,6 +98,11 @@ export class Interacte {
         }
     }
 
+    removeHangmanLastPiece(){
+
+        this.#hangManPieces.unshift(this.#hangManPiecesBackUp.pop());
+    }
+
     hideHangman(){
 
         this.#hangManPieces.forEach(piece => {
@@ -86,29 +111,39 @@ export class Interacte {
         });
     }
 
-    getLeftedPieces(){
+    getUsedPiecesCount(){
+
+        return this.#hangManPiecesBackUp.length;
+    }
+
+    getLeftedPiecesCount(){
 
         return this.#hangManPieces.length;
     }
 
-    fadeInWord(milliseconds){
+    fadeInMessage(milliseconds,message){
 
-        document.querySelector('.word-box').innerHTML = this.#word;
-        document.querySelector('.word-box').style.display = "block";
+        document.querySelector('.game-message').innerHTML = message;
+        document.querySelector('.game-message').style.display = "block";
 
         window.setTimeout(()=>{
 
-            document.querySelector('.word-box').classList.add('fadeIn');
+            document.querySelector('.game-message').classList.add('fadeIn');
 
         },800);
 
         window.setTimeout(()=>{
 
-            document.querySelector('.word-box').classList.remove('fadeIn');
+            document.querySelector('.game-message').classList.remove('fadeIn');
 
         },milliseconds);
 
-        document.querySelector('.word-box').style.display = "none";
+        window.setTimeout(()=>{
+
+            document.querySelector('.game-message').style.display = "none";
+
+        },milliseconds);
+
     }
 
     setWord(word){
