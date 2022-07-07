@@ -18,5 +18,5 @@ export const words = [
     "sheep",
     "tiger",
     "whale",
-    "wolf"
-]
+    "wolf"  
+];

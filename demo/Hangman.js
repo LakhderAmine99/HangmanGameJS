@@ -79,7 +79,7 @@ function HangmanGame(){
 
     /**
      * 
-     * @param {Event} e 
+     * @param {Event} e
      * @returns 
      */
     function handleAlphabetKeyDown(e){
@@ -115,7 +115,7 @@ function HangmanGame(){
                     wordsToChoose.splice(chosenWordIndex,1);
                         
                     [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
-                        
+
                     interacte.clearBoxs();
                     interacte.setWord(chosenWord);                
                     interacte.createAlphaBoxs();
