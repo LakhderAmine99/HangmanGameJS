@@ -95,7 +95,12 @@ function HangmanGame(){
 
                 if(filledBoxs === chosenWord.length){
 
-                    interacte.fadeInWord(4000);
+                    if(interacte.getUsedPiecesCount() !== 0){
+
+                        interacte.removeHangmanLastPiece();
+                    }
+
+                    // interacte.fadeInMessage(4000,chosenWord);
                     interacte.updateScore(updateGameScore());
 
                     if(wordsToChoose.length - 1 === 0){
@@ -120,7 +125,7 @@ function HangmanGame(){
 
                 interacte.drawHangman(interacte.nextPiece());
 
-                if(interacte.getLeftedPieces() === 0){
+                if(interacte.getLeftedPiecesCount() === 0){
 
                     Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
                     updateGame();
@@ -164,6 +169,11 @@ function HangmanGame(){
     function endGame(){
 
         interacte.clearBoxs();
+
+        if(interacte.getLeftedPiecesCount() === 0){
+            
+            interacte.fadeInMessage(4000,"Game Over");
+        }
     }
 
 };

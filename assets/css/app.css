@@ -5,13 +5,15 @@
 }
 
 html,body{
-    background-color: rgb(55, 37, 63);
+    /* background-color: rgb(55, 37, 63); */
     color: white;
     height: 100%;
 }
 
 #app{
     height: 100%;
+    background-image: url('../images/6.jpg');
+    background-size: cover;
 }
 
 main,.container{
@@ -21,11 +23,11 @@ main,.container{
 .hangman-visualization-panel{
 
     height: 80%;
-    background-color: rgba(49, 0, 64, 0.286);
 }
 
 .user-interactions-panel{
 
+    background-color: rgba(0, 122, 141, 0.13);
     height: 20%;
     display: flex;
     align-items: center;
@@ -37,11 +39,11 @@ main,.container{
 }
 
 .alpha-box-template{
-    border: 5px solid rgb(255, 179, 0);
+    border: 5px solid rgb(54, 28, 18);
     padding: 1.5rem;
     border-radius: 0.5rem;
     margin: 1rem 1.5rem;
-    background-color: rgba(132, 0, 255, 0.367);
+    background-color: rgba(0, 213, 255, 0.23);
     font-weight: bold;
     font-size: 24px;
     width: 80px;
@@ -61,5 +63,26 @@ main,.container{
     text-align: center;
     border-bottom-left-radius: 10%;
     background-color: rgba(0, 0, 0, 0.377);
-    color: rgb(255, 101, 160);
+    color: rgb(77, 157, 161);
+}
+
+.game-message{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    padding: 2.5rem 4rem;
+    font-size: 38px;
+    border-radius: 10%;
+    opacity: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.377);
+    text-align: center;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fadeIn{
+    opacity: 1 !important;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%) !important;
 }
