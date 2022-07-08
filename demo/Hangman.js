@@ -13,11 +13,6 @@ function HangmanGame(){
     let chosenWordIndex = null;
 
     /**
-     * @type {number} gameScore
-     */
-    let gameScore = 0;
-
-    /**
      * @type {string[]} wordsToChoose
      */
     let wordsToChoose = Hangman.words;
