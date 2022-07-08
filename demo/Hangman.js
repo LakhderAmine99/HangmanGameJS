@@ -25,7 +25,7 @@ function HangmanGame(){
     /**
      * @type {Hangman.Interacte} interacte
      */
-    let interacte = null;
+    let interacte = new Hangman.Interacte();
 
     /**
      * @type {number} filledBoxs
@@ -51,8 +51,7 @@ function HangmanGame(){
 
         [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
 
-        interacte = new Hangman.Interacte(chosenWord);
-
+        interacte.setWord(chosenWord);
         interacte.createAlphaBoxs();
     }
 
@@ -84,7 +83,7 @@ function HangmanGame(){
      */
     function handleAlphabetKeyDown(e){
 
-        if(e.key.match('[A-z]')){
+        if(e.keyCode >= 65 && e.keyCode <= 90){
 
             if(chosenWord.includes((e.key).toLowerCase())){
 
@@ -100,7 +99,6 @@ function HangmanGame(){
                         interacte.removeHangmanLastPiece();
                     }
 
-                    // interacte.fadeInMessage(4000,chosenWord);
                     interacte.updateScore(updateGameScore());
 
                     if(wordsToChoose.length - 1 === 0){
@@ -177,6 +175,7 @@ function HangmanGame(){
             window.setTimeout(()=>{
 
                 initGame();
+                interacte.updateScore(0);
                 
             },4000);
         }
