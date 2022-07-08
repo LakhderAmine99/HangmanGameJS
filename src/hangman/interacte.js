@@ -36,7 +36,7 @@ export class Interacte {
             "righthand",
             "leftfoot",
             "rightfoot"
-        ]
+        ];
     }
 
     createAlphaBox(id){
@@ -49,8 +49,6 @@ export class Interacte {
         document.querySelector('.user-interactions-panel').appendChild(boxElement);
 
         this.#alphaBoxs.push(boxElement);
-
-        return true;
     }
     
     createAlphaBoxs(){
@@ -136,7 +134,7 @@ export class Interacte {
 
             document.querySelector('.game-message').classList.remove('fadeIn');
 
-        },milliseconds);
+        },1600);
 
         window.setTimeout(()=>{
 
