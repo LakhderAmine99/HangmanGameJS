@@ -76,6 +76,7 @@ export class Interacte {
 
     updateScore(score){
         document.querySelector('.game-score').innerHTML = "Score : "+score;
+        document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
     }
 
     nextPiece(){
@@ -143,6 +144,12 @@ export class Interacte {
 
         },milliseconds);
 
+    }
+
+    constructHangman(){
+
+        this.#hangManPieces = this.#hangManPiecesBackUp;
+        this.#hangManPiecesBackUp = [];
     }
 
     setWord(word){

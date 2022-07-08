@@ -100,21 +100,21 @@ function HangmanGame(){
                     }
 
                     interacte.updateScore(updateGameScore());
+    
+                    filledBoxs = 0;
+                        
+                    wordsToChoose.splice(chosenWordIndex,1);
 
-                    if(wordsToChoose.length - 1 === 0){
+                    if(wordsToChoose.length === 0){
 
                         Hangman.state.CURRENT_STATE = Hangman.state.GAMEOVER;
                         updateGame();
                         return;
                     }
-    
-                    filledBoxs = 0;
-                        
-                    wordsToChoose.splice(chosenWordIndex,1);
                         
                     [chosenWord,chosenWordIndex] = getRandomWord(wordsToChoose);
 
-                    interacte.clearBoxs();
+                    interacte.clearBoxs()
                     interacte.setWord(chosenWord);                
                     interacte.createAlphaBoxs();
                 }
@@ -175,9 +175,15 @@ function HangmanGame(){
             window.setTimeout(()=>{
 
                 initGame();
+                interacte.constructHangman();
                 interacte.updateScore(0);
                 
             },4000);
+        }
+
+        if(wordsToChoose.length === 0){
+
+            interacte.fadeInMessage(4000,"You Win !");
         }
 
     }
