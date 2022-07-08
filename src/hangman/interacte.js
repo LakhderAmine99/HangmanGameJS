@@ -25,7 +25,7 @@ export class Interacte {
      * @param {string} word 
      */
     constructor(word){
-        this.#word = word;
+        this.#word = word || null;
 
         this.#hangManPieces = [
             "bar",
@@ -69,12 +69,7 @@ export class Interacte {
     }
 
     clearBoxs(){
-
-        this.#alphaBoxs.forEach(box => {
-            
-            box.innerHTML = "";
-        });
-
+        
         this.#alphaBoxs = [];
         document.querySelector('.user-interactions-panel').innerHTML = "";
     }
