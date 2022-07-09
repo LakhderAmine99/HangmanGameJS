@@ -13,11 +13,6 @@ function HangmanGame(){
     let chosenWordIndex = null;
 
     /**
-     * @type {number} gameScore
-     */
-    let gameScore = 0;
-
-    /**
      * @type {string[]} wordsToChoose
      */
     let wordsToChoose = Hangman.words;
@@ -171,14 +166,6 @@ function HangmanGame(){
         if(interacte.getLeftedPiecesCount() === 0){
             
             interacte.fadeInMessage(4000,"Game Over");
-            
-            window.setTimeout(()=>{
-
-                initGame();
-                interacte.constructHangman();
-                interacte.updateScore(0);
-                
-            },4000);
         }
 
         if(wordsToChoose.length === 0){
@@ -186,8 +173,14 @@ function HangmanGame(){
             interacte.fadeInMessage(4000,"You Win !");
         }
 
-    }
+        window.setTimeout(()=>{
 
+            initGame();
+            interacte.constructHangman();
+            interacte.updateScore(0);
+            
+        },4000);
+    }
 };
 
 const setup = () => {
