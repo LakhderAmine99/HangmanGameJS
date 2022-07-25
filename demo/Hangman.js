@@ -177,6 +177,7 @@ function HangmanGame(){
 
             initGame();
             interacte.constructHangman();
+            interacte.hideHangman();
             interacte.updateScore(0);
             
         },4000);

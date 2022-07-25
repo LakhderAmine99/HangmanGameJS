@@ -68,10 +68,12 @@ main,.container{
 }
 
 .game-chances{
+    z-index: 2;
     left: 0;
 }
 
 .game-message{
+    z-index: 2;
     position: absolute;
     left: 50%;
     top: 0;
@@ -91,4 +93,71 @@ main,.container{
     opacity: 1 !important;
     top: 50%;
     transform: translateY(-50%) translateX(-50%) !important;
+}
+
+.hide{
+    display: none;
+}
+
+/*****************************/
+
+/* hangman */
+
+.hangman-visualization-panel{
+    width: 100%;
+    user-select: none;
+}
+
+img{
+    position: absolute;
+    -webkit-user-drag: none;
+}
+
+.bar{
+    transform: translateX(630px) rotate(90deg);
+    z-index: 3;
+}
+
+.rope{
+    transform: translateX(750px) translateY(200px);
+    width: 60px;
+    z-index: 3;
+}
+
+.head,.body,.leftfoot,.lefthand,.rightfoot,.righthand{
+    filter: hue-rotate(140deg);
+}
+
+.head{
+    transform: translateX(758px) translateY(320px);
+    width: 40px;
+    z-index: 4;
+}
+
+.body{
+    transform: translateX(758px) translateY(360px);
+    width: 40px;
+}
+
+.lefthand{
+    transform: translateX(738px) translateY(362px);
+    width: 20px;
+    
+}
+
+.righthand{
+    transform: translateX(798px) translateY(362px);
+    width: 20px;
+    
+}
+
+.leftfoot{
+    transform: translateX(749px) translateY(428px);
+    width: 20px;
+    
+}
+
+.rightfoot{
+    transform: translateX(786px) translateY(428px);
+    width: 20px;
 }
