@@ -91,21 +91,24 @@ export class Interacte {
         if(piece !== undefined){
 
             document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
-            document.querySelector('.'+piece).classList.add('visible');
+            document.querySelector('.'+piece).classList.remove('hide');
         }
     }
 
     removeHangmanLastPiece(){
 
-        this.#hangManPieces.unshift(this.#hangManPiecesBackUp.pop());
+        let piece = this.#hangManPiecesBackUp.pop();
+        this.#hangManPieces.unshift(piece);
+
         document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
+        document.querySelector('.'+piece).classList.add('hide');
     }
 
     hideHangman(){
 
         this.#hangManPieces.forEach(piece => {
-
-            document.querySelector('.'+piece).classList.remove('visible');
+            
+            document.querySelector('.'+piece).classList.add('hide');
         });
     }
 
