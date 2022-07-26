@@ -95,7 +95,7 @@ export class Interacte {
         }
     }
 
-    removeHangmanLastPiece(){
+    hidehangmanLastPiece(){
 
         let piece = this.#hangManPiecesBackUp.pop();
         this.#hangManPieces.unshift(piece);
