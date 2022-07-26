@@ -72,7 +72,7 @@ export class Interacte {
         document.querySelector('.user-interactions-panel').innerHTML = "";
     }
 
-    updateScore(score){
+    updateState(score){
         document.querySelector('.game-score').innerHTML = "Score : "+score;
         document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
     }
