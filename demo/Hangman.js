@@ -91,10 +91,10 @@ function HangmanGame(){
 
                     if(interacte.getUsedPiecesCount() !== 0){
 
-                        interacte.removeHangmanLastPiece();
+                        interacte.hideHangmanLastPiece();
                     }
 
-                    interacte.updateScore(updateGameScore());
+                    interacte.updateState(updateGameScore());
     
                     filledBoxs = 0;
                         
@@ -176,9 +176,10 @@ function HangmanGame(){
         window.setTimeout(()=>{
 
             initGame();
+            
             interacte.constructHangman();
             interacte.hideHangman();
-            interacte.updateScore(0);
+            interacte.updateState(0);
             
         },4000);
     }
