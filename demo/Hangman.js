@@ -23,9 +23,9 @@ function HangmanGame(){
     let interacte = new Hangman.Interacte();
 
     /**
-     * @type {number} filledBoxs
+     * @type {number} filledBoxsCount
      */
-    let filledBoxs = 0;
+    let filledBoxsCount = 0;
 
     this.run = function(){
 
@@ -85,9 +85,9 @@ function HangmanGame(){
                 interacte.fillBox((e.key).toUpperCase(),chosenWord.indexOf(e.key));
                 chosenWord = chosenWord.replace(e.key,'#');
 
-                filledBoxs++;
+                filledBoxsCount++;
 
-                if(filledBoxs === chosenWord.length){
+                if(filledBoxsCount === chosenWord.length){
 
                     if(interacte.getUsedPiecesCount() !== 0){
 
@@ -96,7 +96,7 @@ function HangmanGame(){
 
                     interacte.updateState(updateGameScore());
     
-                    filledBoxs = 0;
+                    filledBoxsCount = 0;
                         
                     wordsToChoose.splice(chosenWordIndex,1);
 
