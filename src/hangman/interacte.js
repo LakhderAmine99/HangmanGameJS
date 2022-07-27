@@ -1,3 +1,7 @@
+/**
+ * @class
+ * @module
+ */
 export class Interacte {
 
     /**
@@ -39,6 +43,10 @@ export class Interacte {
         ];
     }
 
+    /**
+     * 
+     * @param {number} id 
+     */
     createAlphaBox(id){
 
         let boxElement = document.createElement('div');
@@ -51,6 +59,9 @@ export class Interacte {
         this.#alphaBoxs.push(boxElement);
     }
     
+    /**
+     * 
+     */
     createAlphaBoxs(){
 
         document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
@@ -61,22 +72,38 @@ export class Interacte {
         }
     }
 
+    /**
+     * 
+     * @param {string} alpha 
+     * @param {number} boxIndex 
+     */
     fillBox(alpha,boxIndex){
 
         this.#alphaBoxs[boxIndex].innerHTML = alpha;
     }
 
+    /**
+     * 
+     */
     clearBoxs(){
         
         this.#alphaBoxs = [];
         document.querySelector('.user-interactions-panel').innerHTML = "";
     }
 
+    /**
+     * 
+     * @param {number} score 
+     */
     updateState(score){
         document.querySelector('.game-score').innerHTML = "Score : "+score;
         document.querySelector('.game-chances').innerHTML = "Chances Left : "+ this.#hangManPieces.length;
     }
 
+    /**
+     * 
+     * @returns {string} The next hangman piece.
+     */
     nextPiece(){
 
         let piece = this.#hangManPieces.shift();
@@ -86,6 +113,10 @@ export class Interacte {
         return piece;
     }
 
+    /**
+     * 
+     * @param {string} piece 
+     */
     drawHangman(piece){
 
         if(piece !== undefined){
@@ -95,6 +126,9 @@ export class Interacte {
         }
     }
 
+    /**
+     * 
+     */
     hideHangmanLastPiece(){
 
         let piece = this.#hangManPiecesBackUp.pop();
@@ -104,6 +138,9 @@ export class Interacte {
         document.querySelector('.'+piece).classList.add('hide');
     }
 
+    /**
+     * 
+     */
     hideHangman(){
 
         this.#hangManPieces.forEach(piece => {
@@ -112,16 +149,29 @@ export class Interacte {
         });
     }
 
+    /**
+     * 
+     * @returns 
+     */
     getUsedPiecesCount(){
 
         return this.#hangManPiecesBackUp.length;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     getLeftedPiecesCount(){
 
         return this.#hangManPieces.length;
     }
 
+    /**
+     * 
+     * @param {number} milliseconds 
+     * @param {string} message 
+     */
     fadeInMessage(milliseconds,message){
 
         document.querySelector('.game-message').innerHTML = message;
@@ -147,16 +197,27 @@ export class Interacte {
 
     }
 
+    /**
+     * 
+     */
     constructHangman(){
 
         this.#hangManPieces = this.#hangManPiecesBackUp;
         this.#hangManPiecesBackUp = [];
     }
 
+    /**
+     * 
+     * @param {string} word 
+     */
     setWord(word){
         this.#word = word;
     }
 
+    /**
+     * 
+     * @returns {string} The hangman word.
+     */
     getWord(){
         return this.#word;
     }
